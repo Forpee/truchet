@@ -2,6 +2,7 @@ uniform float uTime;
 
 varying vec3 vPosition;
 varying vec2 vUv;
+varying vec3 vNormal;
 
 float PI=3.1415926535897932384626433832795;
 
@@ -15,6 +16,8 @@ void main()
     vec2 gUv=fract(nUv)-.5;
     
     vec2 id=mod(floor(nUv),vec2(6.));
+    
+    float diff=clamp(dot(vec3(0.,0.,1.),vNormal),.3,1.);
     float n=hash(id);
     gUv.x*=2.*step(.5,n)-1.;
     
@@ -24,7 +27,7 @@ void main()
     
     if(mask<.0001)discard;
     
-    gl_FragColor=vec4(vec3(mask)*.7,mask);
+    gl_FragColor=vec4(vec3(mask)*diff,mask);
     
     if(!gl_FrontFacing){
         gl_FragColor.a*=.5;

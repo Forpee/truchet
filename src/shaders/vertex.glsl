@@ -1,5 +1,6 @@
 varying vec2 vUv;
 varying vec3 vPosition;
+varying vec3 vNormal;
 
 void main()
 {
@@ -7,6 +8,7 @@ void main()
     // gl_PointSize=100.*(1./-mvPosition.z);
     vUv=uv;
     vPosition=position;
+    vNormal=normal;
     
     vec3 newPos=position;
     
