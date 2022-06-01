@@ -50,7 +50,8 @@ const material = new THREE.ShaderMaterial({
     },
     vertexShader: vertexShader,
     fragmentShader: fragmentShader,
-    side: THREE.DoubleSide
+    side: THREE.DoubleSide,
+    transparent: true,
 });
 
 // Mesh
@@ -114,7 +115,7 @@ const tick = () => {
 
     // Get elapsedtime
     const elapsedTime = clock.getElapsedTime();
-    mesh.rotation.z = 2 * Math.PI * elapsedTime * 0.5;
+    mesh.rotation.z = 2 * Math.PI * elapsedTime * 0.2;
 
     // Update uniforms
     material.uniforms.uTime.value = elapsedTime;

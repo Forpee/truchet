@@ -11,7 +11,7 @@ void main()
 {
     float angle=(atan(vPosition.y,vPosition.x)+PI)/(2.*PI);
     
-    vec2 nUv=6.*vec2(8.*angle,vUv.y*5.);
+    vec2 nUv=6.*vec2(7.*angle+.4*uTime,vUv.y*5.-.4*uTime);
     vec2 gUv=fract(nUv)-.5;
     
     vec2 id=mod(floor(nUv),vec2(6.));
@@ -24,7 +24,7 @@ void main()
     
     if(mask<.0001)discard;
     
-    gl_FragColor=vec4(vec3(mask),mask);
+    gl_FragColor=vec4(vec3(mask)*.7,mask);
     
     if(!gl_FrontFacing){
         gl_FragColor.a*=.5;
