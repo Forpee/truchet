@@ -16,8 +16,9 @@ void main()
     vec2 gUv=fract(nUv)-.5;
     
     vec2 id=mod(floor(nUv),vec2(6.));
-    
+    // lighting
     float diff=clamp(dot(vec3(0.,0.,1.),vNormal),.3,1.);
+    
     float n=hash(id);
     gUv.x*=2.*step(.5,n)-1.;
     
